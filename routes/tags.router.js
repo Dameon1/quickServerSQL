@@ -34,7 +34,7 @@ router.get('/tags/:id', (req,res,next) => {
 
 
 router.put('/tags/:id', (req, res, next) => {
-  const searchTerm = req.params.id;
+  const tagId = req.params.id;
     
   /***** Never trust users - validate input *****/
   const updateObj = {};
@@ -54,33 +54,16 @@ router.put('/tags/:id', (req, res, next) => {
   }
     
   knex('tags')
-    .where({id:searchTerm})
+    .where({id:tagId})
     .update(updateObj)
     .returning(['id','name'])
     .then(results => {
-      res.json(results);
+      updateObj['id'] = results;
+      res.json([updateObj]);
     }).catch(err => {
       next(err);
     });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 router.post('/tags', (req, res, next) => {
   const { name } = req.body;
@@ -100,21 +83,11 @@ router.post('/tags', (req, res, next) => {
     .then((results) => {
       // Uses Array index solution to get first item in results array
       const result = results[0];
-      res.location(`${req.originalUrl}/${result.id}`).status(201).json(result);
+      newItem['id'] = results[0];
+      res.location(`${req.originalUrl}/${result.id}`).status(201).json(newItem);
     })
     .catch(err => next(err));
 });
-
-
-
-
-
-
-
-
-
-
-
 
 router.delete('/tags/:id', (req, res, next) => {
   knex.del()

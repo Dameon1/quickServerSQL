@@ -3,7 +3,6 @@ let express = require('express');
 let knex = require('../knex');
 let router = express.Router();
 
-
 router.get('/folders', (req, res, next) => {
   knex.select('id', 'name')
     .from('folders')
@@ -12,10 +11,6 @@ router.get('/folders', (req, res, next) => {
     })
     .catch(err => next(err));
 });
-
-
-
-
 
 router.get('/folders/:id', (req,res,next) => {
   const searchTerm = req.params.id;
@@ -32,7 +27,7 @@ router.get('/folders/:id', (req,res,next) => {
 });
 
 router.put('/folders/:id', (req, res, next) => {
-  const searchTerm = req.params.id;
+  const folderId = req.params.id;
   
   /***** Never trust users - validate input *****/
   const updateObj = {};
@@ -52,11 +47,12 @@ router.put('/folders/:id', (req, res, next) => {
   }
   
   knex('folders')
-    .where({id:searchTerm})
+    .where({id:folderId})
     .update(updateObj)
     .returning(['id','name'])
     .then(results => {
-      res.json(results);
+      updateObj['id']=folderId;
+      res.json(updateObj);
     }).catch(err => {
       next(err);
     });
@@ -74,28 +70,16 @@ router.post('/folders', (req, res, next) => {
   }
   
   knex('folders')
-    .insert([newItem])
-    .returning(['id', 'name'])
+    .insert(newItem)
     .then(results => {
-      res.status(201).json(results[0]);
+      newItem['id']=results[0];
+      res.status(201).json(newItem);
     }).catch(err => {
       next(err);
     });
 
 });
 
-// router.delete('/folders/:id', (req, res, next) => {
-//   const searchTerm = req.params.id;
-  
-//   knex('notes')
-//     .where({id:searchTerm})
-//     .del()
-//     .then(results => {
-//       res.status(204).json(results);
-//     }).catch(err => {
-//       next(err);
-//     });
-// });
 router.delete('/folders/:id', (req, res, next) => {
   knex.del()
     .where('id', req.params.id)
@@ -105,29 +89,5 @@ router.delete('/folders/:id', (req, res, next) => {
     })
     .catch(next);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 module.exports = router;

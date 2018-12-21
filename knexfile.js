@@ -1,7 +1,6 @@
 'use strict';
-
+//This file is setup to use for MySQL and can be swapped out with the PostgrSQL
 module.exports = {
-
   development: {    
       client: 'mysql',
       //local development server
