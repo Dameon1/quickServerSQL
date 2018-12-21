@@ -24,7 +24,6 @@ describe('Noteful App', function () {
       return knex.count()
         .from('folders')
         .then((result) => {
-          console.log(result);
           count = result[0]['count(*)'];
           return chai.request(app).get('/api/folders');
         })
@@ -145,7 +144,6 @@ describe('Noteful App', function () {
         .post('/api/folders')
         .send(newItem)
         .then(function (res) {
-          console.log(res.body);
           body = res.body;
           expect(res).to.have.status(201);
           expect(res).to.be.json;
@@ -196,7 +194,6 @@ describe('Noteful App', function () {
         .then(function (res) {
           expect(res).to.have.status(200);
           expect(res).to.be.json;
-          console.log(res.body);
           expect(res.body).to.include.keys('id', 'name');
           expect(res.body.id).to.equal('1');
           expect(res.body.title).to.equal(updateItem.title);

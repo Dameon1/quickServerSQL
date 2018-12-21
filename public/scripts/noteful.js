@@ -45,8 +45,6 @@ const noteful = (function () {
           </div>
       </li>`);
     return listItems.join('');
-
-
   }
 
   function generateFolderList(list, currQuery) {
@@ -145,7 +143,6 @@ const noteful = (function () {
   function handleNoteFormSubmit() {
     $('.js-note-edit-form').on('submit', function (event) {
       event.preventDefault();
-      console.log('Hello')
       const editForm = $(event.currentTarget);
       const noteObj = {
         id: store.currentNote.id,
@@ -259,7 +256,6 @@ const noteful = (function () {
       if (folderId === store.currentNote.folderId) {
         store.currentNote = {};
       }
-
       
       api.remove(`/api/folders/${folderId}`)
         .then(() => {
@@ -323,7 +319,6 @@ const noteful = (function () {
       }
 
       store.currentNote = {};
-
       
       api.remove(`/api/tags/${tagId}`)
         .then(() => {
@@ -343,11 +338,9 @@ const noteful = (function () {
   function bindEventListeners() {
     handleNoteItemClick();
     handleNoteSearchSubmit();
-
     handleNoteFormSubmit();
     handleNoteStartNewSubmit();
     handleNoteDeleteClick();
-
     handleFolderClick();
     handleNewFolderSubmit();
     handleFolderDeleteClick();
