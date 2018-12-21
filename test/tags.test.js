@@ -27,7 +27,6 @@ describe('Noteful App', function () {
       return knex.count()
         .from('tags')
         .then(([result]) => {
-          console.log(result);
           count = result['count(*)'];
           return chai.request(app).get('/api/tags');
         })
@@ -201,7 +200,6 @@ describe('Noteful App', function () {
           expect(res).to.be.json;
           expect(res.body).to.be.an('array');
           expect(res.body[0]).to.include.keys('id', 'name');
-          console.log(res.body);
           expect(res.body[0].id).to.equal(1);
           expect(res.body[0].name).to.equal(updateItem.name);
           expect(res.body.content).to.equal(updateItem.content);
