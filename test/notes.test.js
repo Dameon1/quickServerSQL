@@ -6,11 +6,11 @@ const chaiHttp = require('chai-http');
 const knex = require('../knex');
 const seedData = require('../db/seedData');
 const expect = chai.expect;
-
 chai.use(chaiHttp);
 
 describe('Noteful App', function () {
 
+  
   beforeEach(function () {
     return seedData('./db/noteful.sql');
   });

@@ -14,9 +14,9 @@ describe('Noteful App', function () {
   beforeEach(function () {
     return seedData('./db/noteful.sql');
   });
-
+  //this after goes in last testing file
   after(function () {
-    //return knex.destroy(); // destroy the connection
+    return knex.destroy(); // destroy the connection
   });
 
   
