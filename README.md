@@ -13,3 +13,6 @@
 - Change into this folder.
 - Run 'npm install'.
 - Optionally you can run 'npm test' to ensure everything is working.
+
+## Important
+- You must have a SQL server running to use. XAMPP or WAMP.
