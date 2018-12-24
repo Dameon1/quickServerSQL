@@ -12,20 +12,31 @@ module.exports = {
         database : 'test_db'
       }    
   },
+    test: {
+        client: 'mysql',
+        connection: process.env.TEST_DATABASE_URL || {
+          host : '127.0.0.1',
+          user : 'root',
+          password : '',
+          database : 'test_db'
+        },
+        pool: {min:1 , max: 2}
+      },
   production: {
     client: 'mysql',
     connection: process.env.DATABASE_URL
   },
-  test: {
-    client: 'mysql',
-    connection: process.env.TEST_DATABASE_URL || {
-      host : '127.0.0.1',
-      user : 'root',
-      password : '',
-      database : 'test_db'
-    },
-    pool: {min:1 , max: 2}
-  },
+  /* If you want to create a test database use this in */
+  // test: {
+  //   client: 'mysql',
+  //   connection: process.env.TEST_DATABASE_URL || {
+  //     host : '127.0.0.1',
+  //     user : 'root',
+  //     password : '',
+  //     database : 'test_db'
+  //   },
+  //   pool: {min:1 , max: 2}
+  // },
 
   /* If you want to use PostgreSQL then uncomment this portion out */
 

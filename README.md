@@ -2,6 +2,14 @@
 
 [![Build Status](https://travis-ci.org/Dameon1/quickServerSQL.svg?branch=master)](https://travis-ci.org/Dameon1/quickServerSQL)
 
-- This application is being designed for basic CRUD operations using MySQL and PostgreSQL
+## Overview
+- This application is a basic boilerplate for basic CRUD operations using MySQL and PostgreSQL.
+- It has a public folder with HTML , CSS and Javscript using jQuery to see results in a browser.
 
-- It has a public folder with HTML , CSS and Javscript to see a client.
+## Instructions
+- Create a directory that you want to work in.
+- Change directly into that directory.
+- Git clone this repository.
+- Change into this folder.
+- Run 'npm install'.
+- Optionally you can run 'npm test' to ensure everything is working.

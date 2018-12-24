@@ -3,13 +3,12 @@ node_js: node
 services: mysql
 before_install:
   - mysql -e 'CREATE DATABASE test_db;'
-#before_script: mysql test_db < ../db/noteful.sql
-  #- psql -U postgres -c 'CREATE DATABASE "noteful-test";'
 
 
+# If you want to use PostgreSQL 
 
-# before_script:
-#   - psql -c 'CREATE DATABASE noteful-test;' -U dev
+# before_install:
+#   - psql -U postgres -c 'CREATE DATABASE "test_db";'
 #   addons:
 #     postgresql:"10"
 #     apt:
@@ -18,5 +17,4 @@ before_install:
 #         -postgresql-client-10
 #         env:
 #           global:
-#             -PGPORT=5433
-             
+#             -PGPORT=5433             

@@ -27,12 +27,6 @@ router.get('/tags/:id', (req,res,next) => {
     });
 });
 
-
-
-
-
-
-
 router.put('/tags/:id', (req, res, next) => {
   const tagId = req.params.id;
     
@@ -98,42 +92,5 @@ router.delete('/tags/:id', (req, res, next) => {
     })
     .catch(next);
 });
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 module.exports = router;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
