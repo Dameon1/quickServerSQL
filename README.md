@@ -4,7 +4,7 @@
 
 ## Overview
 - This application is a basic boilerplate for basic CRUD operations using MySQL and PostgreSQL.
-- It has a public folder with HTML , CSS and Javscript using jQuery to see results in a browser.
+- It has a public folder with HTML , CSS, and Javascript. Using jQuery to see results in a browser.
 
 ## Instructions
 - Create a directory that you want to work in.
@@ -15,4 +15,4 @@
 - Optionally you can run 'npm test' to ensure everything is working.
 
 ## Important
-- You must have a SQL server running to use. XAMPP or WAMP.
+- You must have a SQL server running to use. [XAMPP](https://en.wikipedia.org/wiki/XAMPP) or [WAMP](https://github.com/Dameon1/quickServerSQL.git).
